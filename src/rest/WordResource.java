@@ -1,7 +1,5 @@
 package rest;
 
-import rest.Word;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -10,6 +8,8 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import hibernate.pojo.Word;
+
 @Path("word")
 public class WordResource {
 
@@ -17,7 +17,7 @@ public class WordResource {
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public Response getAllWords() {
 	        Word wm = new Word("Kimberly", 
-	                "English",
+	                1,
 	                1,
 	                true,
 	                false,
@@ -38,7 +38,7 @@ public class WordResource {
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public Response getWordInformationByWord(final @PathParam("word") String pstrWord) {
 	        Word wm = new Word("Kimberly",
-	                "English",
+	                1,
 	                1,
 	                true,
 	                false,

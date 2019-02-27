@@ -8,10 +8,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@Data @AllArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 @Entity @Table(name = "tblWord")
 @XmlRootElement
 public class Word implements Serializable, HibernateObject {

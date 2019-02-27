@@ -1,7 +1,8 @@
-package hibernate.pojo;
+ package hibernate.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Data @AllArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 @Entity @Table(name = "tblDefinition")
 @XmlRootElement
 public class Definition implements Serializable, HibernateObject {

@@ -1,5 +1,7 @@
 package rest;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -9,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import hibernate.pojo.Word;
+import hibernate.queries.SelectManager;
 
 @Path("word")
 public class WordResource {
@@ -16,20 +19,8 @@ public class WordResource {
 	    @GET
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public Response getAllWords() {
-	        Word wm = new Word("Kimberly", 
-	                1,
-	                1,
-	                true,
-	                false,
-	                false,
-	                false,
-	                false,
-	                false,
-	                false,
-	                false,
-	                false,
-	                false);
-	        GenericEntity<Word> wordWrapperList = new GenericEntity<>(wm) {};
+	    	List<Word> wordList = SelectManager.selectAllWords();
+	        GenericEntity<List<Word>> wordWrapperList = new GenericEntity<>(wordList) {};
 	        return Response.ok(wordWrapperList).build();
 	    }
 
@@ -37,20 +28,8 @@ public class WordResource {
 	    @Path("/{word}")
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public Response getWordInformationByWord(final @PathParam("word") String pstrWord) {
-	        Word wm = new Word("Kimberly",
-	                1,
-	                1,
-	                true,
-	                false,
-	                false,
-	                false,
-	                false,
-	                false,
-	                false,
-	                false,
-	                false,
-	                false);
-	        GenericEntity<Word> wordWrapperList = new GenericEntity<>(wm) {};
+	        List<Word> wordList = SelectManager.selectWord(pstrWord);
+	        GenericEntity<List<Word>> wordWrapperList = new GenericEntity<>(wordList) {};
 	        return Response.ok(wordWrapperList).build();
 	    }
 

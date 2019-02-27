@@ -2,6 +2,7 @@ package hibernate.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -9,9 +10,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Data @AllArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 @Entity @Table(name = "tblConnection")
+@XmlRootElement
 public class Connection implements Serializable, HibernateObject {
 
     @Id @Column(name = "fstrFrom") private String strFrom;

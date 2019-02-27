@@ -1,7 +1,7 @@
 package parsers.wikipedia.control;
 
 import control.Global;
-import hibernate.HibernateConnection;
+import hibernate.queries.InsertManager;
 import parsers.wikipedia.WordParser;
 
 import org.jsoup.Jsoup;
@@ -65,7 +65,7 @@ public class WikiParseEngine {
                 wg.setMstrWord(pstrWord);
                 wg.setMeleSpanish(eleWikiPage);
                 wg.setRank(pintRank);
-                HibernateConnection.save(wg.parse());
+                InsertManager.insert(wg.parse());
                 //strAlreadySet.add(pstrWord);
                 wg.parse().forEach(n -> n.print());
             }

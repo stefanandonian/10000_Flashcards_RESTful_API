@@ -1,7 +1,7 @@
 package hibernate.pojo;
 
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 import control.Global;
 
 import javax.persistence.*;
@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.List;
 
-@Data
+@Data @NoArgsConstructor
 @Entity @Table(name = "tblSpanishVerbConjugation")
 @XmlRootElement
 public class SpanishVerbConjugation implements Serializable, HibernateObject {

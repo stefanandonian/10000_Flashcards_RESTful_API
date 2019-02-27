@@ -1,373 +1,90 @@
 package hibernate.pojo;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import control.Global;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import java.io.Serializable;
 import java.util.List;
 
-@Getter @Setter @NoArgsConstructor
-@Entity
-@Table(name = "tblSpanishVerbConjugation")
-public class SpanishVerbConjugation implements HibernateObject {
-
-    //region Column Mappings
-    @Id
-    @Column(name = "fstrInfinitive")
-    private String strInfinitive = "";
-
-    @Column(name = "fstrGerund")
-    private String strGerund = "";
-
-    @Column(name = "fstrPastParticipleMasculineSingular")
-    private String strPastParticipleMasculineSingular = "";
-
-    @Column(name = "fstrPastParticipleFeminineSingular")
-    private String strPastParticipleFeminineSingular = "";
-
-    @Column(name = "fstrPastParticipleMasculinePlural")
-    private String strPastParticipleMasculinePlural = "";
-
-    @Column(name = "fstrPastParticipleFemininePlural")
-    private String strPastParticipleFemininePlural = "";
-
-    @Column(name = "fstrIndicativePresentYo")
-    private String strIndicativePresentYo = "";
-
-    @Column(name = "fstrIndicativePresentTu")
-    private String strIndicativePresentTu = "";
-
-    @Column(name = "fstrIndicativePresentUsted")
-    private String strIndicativePresentUsted = "";
-
-    @Column(name = "fstrIndicativePresentNosotros")
-    private String strIndicativePresentNosotros = "";
-
-    @Column(name = "fstrIndicativePresentVosotros")
-    private String strIndicativePresentVosotros = "";
-
-    @Column(name = "fstrIndicativePresentEllos")
-    private String strIndicativePresentEllos = "";
-
-    @Column(name = "fstrIndicativeImperfectYo")
-    private String strIndicativeImperfectYo = "";
-
-    @Column(name = "fstrIndicativeImperfectTu")
-    private String strIndicativeImperfectTu = "";
-
-    @Column(name = "fstrIndicativeImperfectUsted")
-    private String strIndicativeImperfectUsted = "";
-
-    @Column(name = "fstrIndicativeImperfectNosotros")
-    private String strIndicativeImperfectNosotros = "";
-
-    @Column(name = "fstrIndicativeImperfectVosotros")
-    private String strIndicativeImperfectVosotros = "";
-
-    @Column(name = "fstrIndicativeImperfectEllos")
-    private String strIndicativeImperfectEllos = "";
-
-    @Column(name = "fstrIndicativePreteriteYo")
-    private String strIndicativePreteriteYo = "";
-
-    @Column(name = "fstrIndicativePreteriteTu")
-    private String strIndicativePreteriteTu = "";
-
-    @Column(name = "fstrIndicativePreteriteUsted")
-    private String strIndicativePreteriteUsted = "";
-
-    @Column(name = "fstrIndicativePreteriteNosotros")
-    private String strIndicativePreteriteNosotros = "";
-
-    @Column(name = "fstrIndicativePreteriteVosotros")
-    private String strIndicativePreteriteVosotros = "";
-
-    @Column(name = "fstrIndicativePreteriteEllos")
-    private String strIndicativePreteriteEllos = "";
-
-    @Column(name = "fstrIndicativeFutureYo")
-    private String strIndicativeFutureYo = "";
-
-    @Column(name = "fstrIndicativeFutureTu")
-    private String strIndicativeFutureTu = "";
-
-    @Column(name = "fstrIndicativeFutureUsted")
-    private String strIndicativeFutureUsted = "";
-
-    @Column(name = "fstrIndicativeFutureNosotros")
-    private String strIndicativeFutureNosotros = "";
-
-    @Column(name = "fstrIndicativeFutureVosotros")
-    private String fstrIndicativeFutureVosotros = "";
-
-    @Column(name = "fstrIndicativeFutureEllos")
-    private String strIndicativeFutureEllos = "";
-
-    @Column(name = "fstrIndicativeConditionalYo")
-    private String strIndicativeConditionalYo = "";
-
-    @Column(name = "fstrIndicativeConditionalTu")
-    private String strIndicativeConditionalTu = "";
-
-    @Column(name = "fstrIndicativeConditionalUsted")
-    private String strIndicativeConditionalUsted = "";
-
-    @Column(name = "fstrIndicativeConditionalNosotros")
-    private String strIndicativeConditionalNosotros = "";
-
-    @Column(name = "fstrIndicativeConditionalVosotros")
-    private String strIndicativeConditionalVosotros = "";
-
-    @Column(name = "fstrIndicativeConditionalEllos")
-    private String strIndicativeConditionalEllos = "";
-
-    @Column(name = "fstrSubjunctivePresentYo")
-    private String strSubjunctivePresentYo = "";
-
-    @Column(name = "fstrSubjunctivePresentTu")
-    private String strSubjunctivePresentTu = "";
-
-    @Column(name = "fstrSubjunctivePresentUsted")
-    private String strSubjunctivePresentUsted = "";
-
-    @Column(name = "fstrSubjunctivePresentNosotros")
-    private String strSubjunctivePresentNosotros = "";
-
-    @Column(name = "fstrSubjunctivePresentVosotros")
-    private String strSubjunctivePresentVosotros = "";
-
-    @Column(name = "fstrSubjunctivePresentEllos")
-    private String strSubjunctivePresentEllos = "";
-
-    @Column(name = "fstrSubjunctiveImperfectRaYo")
-    private String strSubjunctiveImperfectRaYo = "";
-
-    @Column(name = "fstrSubjunctiveImperfectRaTu")
-    private String strSubjunctiveImperfectRaTu = "";
-
-    @Column(name = "fstrSubjunctiveImperfectRaUsted")
-    private String strSubjunctiveImperfectRaUsted = "";
-
-    @Column(name = "fstrSubjunctiveImperfectRaNosotros")
-    private String strSubjunctiveImperfectRaNosotros = "";
-
-    @Column(name = "fstrSubjunctiveImperfectRaVosotros")
-    private String strSubjunctiveImperfectRaVosotros = "";
-
-    @Column(name = "fstrSubjunctiveImperfectRaEllos")
-    private String strSubjunctiveImperfectRaEllos = "";
-
-    @Column(name = "fstrSubjunctiveImperfectSeYo")
-    private String strSubjunctiveImperfectSeYo = "";
-
-    @Column(name = "fstrSubjunctiveImperfectSeTu")
-    private String strSubjunctiveImperfectSeTu = "";
-
-    @Column(name = "fstrSubjunctiveImperfectSeUsted")
-    private String strSubjunctiveImperfectSeUsted = "";
-
-    @Column(name = "fstrSubjunctiveImperfectSeNosotros")
-    private String strSubjunctiveImperfectSeNosotros = "";
-
-    @Column(name = "fstrSubjunctiveImperfectSeVosotros")
-    private String strSubjunctiveImperfectSeVosotros = "";
-
-    @Column(name = "fstrSubjunctiveImperfectSeEllos")
-    private String strSubjunctiveImperfectSeEllos = "";
-
-    @Column(name = "fstrSubjunctiveFutureYo")
-    private String strSubjunctiveFutureYo = "";
-
-    @Column(name = "fstrSubjunctiveFutureTu")
-    private String strSubjunctiveFutureTu = "";
-
-    @Column(name = "fstrSubjunctiveFutureUsted")
-    private String strSubjunctiveFutureUsted = "";
-
-    @Column(name = "fstrSubjunctiveFutureNosotros")
-    private String strSubjunctiveFutureNosotros = "";
-
-    @Column(name = "fstrSubjunctiveFutureVosotros")
-    private String strSubjunctiveFutureVosotros = "";
-
-    @Column(name = "fstrSubjunctiveFutureEllos")
-    private String strSubjunctiveFutureEllos = "";
-
-    @Column(name = "fstrImperativeAffirmativeTu")
-    private String strImperativeAffirmativeTu = "";
-
-    @Column(name = "fstrImperativeAffirmativeUsted")
-    private String strImperativeAffirmativeUsted = "";
-
-    @Column(name = "fstrImperativeAffirmativeNosotros")
-    private String strImperativeAffirmativeNosotros = "";
-
-    @Column(name = "fstrImperativeAffirmativeVosotros")
-    private String strImperativeAffirmativeVosotros = "";
-
-    @Column(name = "fstrImperativeAffirmativeEllos")
-    private String strImperativeAffirmativeEllos = "";
-
-    @Column(name = "fstrImperativeNegativeTu")
-    private String strImperativeNegativeTu = "";
-
-    @Column(name = "fstrImperativeNegativeUsted")
-    private String strImperativeNegativeUsted = "";
-
-    @Column(name = "fstrImperativeNegativeNosotros")
-    private String strImperativeNegativeNosotros = "";
-
-    @Column(name = "fstrImperativeNegativeVosotros")
-    private String strImperativeNegativeVosotros = "";
-
-    @Column(name = "fstrImperativeNegativeEllos")
-    private String strImperativeNegativeEllos = "";
-    //endregion
-
-    public SpanishVerbConjugation(String pstrInfinitive,
-                                  String pstrGerund,
-                                  String pstrPastParticipleMasculineSingular,
-                                  String pstrPastParticipleFeminineSingular,
-                                  String pstrPastParticipleMasculinePlural,
-                                  String pstrPastParticipleFemininePlural,
-                                  String pstrIndicativePresentYo,
-                                  String pstrIndicativePresentTu,
-                                  String pstrIndicativePresentUsted,
-                                  String pstrIndicativePresentNosotros,
-                                  String pstrIndicativePresentVosotros,
-                                  String pstrIndicativePresentEllos,
-                                  String pstrIndicativeImperfectYo,
-                                  String pstrIndicativeImperfectTu,
-                                  String pstrIndicativeImperfectUsted,
-                                  String pstrIndicativeImperfectNosotros,
-                                  String pstrIndicativeImperfectVosotros,
-                                  String pstrIndicativeImperfectEllos,
-                                  String pstrIndicativePreteriteYo,
-                                  String pstrIndicativePreteriteTu,
-                                  String pstrIndicativePreteriteUsted,
-                                  String pstrIndicativePreteriteNosotros,
-                                  String pstrIndicativePreteriteVosotros,
-                                  String pstrIndicativePreteriteEllos,
-                                  String pstrIndicativeFutureYo,
-                                  String pstrIndicativeFutureTu,
-                                  String pstrIndicativeFutureUsted,
-                                  String pstrIndicativeFutureNosotros,
-                                  String pfstrIndicativeFutureVosotros,
-                                  String pstrIndicativeFutureEllos,
-                                  String pstrIndicativeConditionalYo,
-                                  String pstrIndicativeConditionalTu,
-                                  String pstrIndicativeConditionalUsted,
-                                  String pstrIndicativeConditionalNosotros,
-                                  String pstrIndicativeConditionalVosotros,
-                                  String pstrIndicativeConditionalEllos,
-                                  String pstrSubjunctivePresentYo,
-                                  String pstrSubjunctivePresentTu,
-                                  String pstrSubjunctivePresentUsted,
-                                  String pstrSubjunctivePresentNosotros,
-                                  String pstrSubjunctivePresentVosotros,
-                                  String pstrSubjunctivePresentEllos,
-                                  String pstrSubjunctiveImperfectRaYo,
-                                  String pstrSubjunctiveImperfectRaTu,
-                                  String pstrSubjunctiveImperfectRaUsted,
-                                  String pstrSubjunctiveImperfectRaNosotros,
-                                  String pstrSubjunctiveImperfectRaVosotros,
-                                  String pstrSubjunctiveImperfectRaEllos,
-                                  String pstrSubjunctiveImperfectSeYo,
-                                  String pstrSubjunctiveImperfectSeTu,
-                                  String pstrSubjunctiveImperfectSeUsted,
-                                  String pstrSubjunctiveImperfectSeNosotros,
-                                  String pstrSubjunctiveImperfectSeVosotros,
-                                  String pstrSubjunctiveImperfectSeEllos,
-                                  String pstrSubjunctiveFutureYo,
-                                  String pstrSubjunctiveFutureTu,
-                                  String pstrSubjunctiveFutureUsted,
-                                  String pstrSubjunctiveFutureNosotros,
-                                  String pstrSubjunctiveFutureVosotros,
-                                  String pstrSubjunctiveFutureEllos,
-                                  String pstrImperativeAffirmativeTu,
-                                  String pstrImperativeAffirmativeUsted,
-                                  String pstrImperativeAffirmativeNosotros,
-                                  String pstrImperativeAffirmativeVosotros,
-                                  String pstrImperativeAffirmativeEllos,
-                                  String pstrImperativeNegativeTu,
-                                  String pstrImperativeNegativeUsted,
-                                  String pstrImperativeNegativeNosotros,
-                                  String pstrImperativeNegativeVosotros,
-                                  String pstrImperativeNegativeEllos) {
-        this.strInfinitive = pstrInfinitive;
-        this.strGerund = pstrGerund;
-        this.strPastParticipleMasculineSingular = pstrPastParticipleMasculineSingular;
-        this.strPastParticipleFeminineSingular = pstrPastParticipleFeminineSingular;
-        this.strPastParticipleMasculinePlural = pstrPastParticipleMasculinePlural;
-        this.strPastParticipleFemininePlural = pstrPastParticipleFemininePlural;
-        this.strIndicativePresentYo = pstrIndicativePresentYo;
-        this.strIndicativePresentTu = pstrIndicativePresentTu;
-        this.strIndicativePresentUsted = pstrIndicativePresentUsted;
-        this.strIndicativePresentNosotros = pstrIndicativePresentNosotros;
-        this.strIndicativePresentVosotros = pstrIndicativePresentVosotros;
-        this.strIndicativePresentEllos = pstrIndicativePresentEllos;
-        this.strIndicativeImperfectYo = pstrIndicativeImperfectYo;
-        this.strIndicativeImperfectTu = pstrIndicativeImperfectTu;
-        this.strIndicativeImperfectUsted = pstrIndicativeImperfectUsted;
-        this.strIndicativeImperfectNosotros = pstrIndicativeImperfectNosotros;
-        this.strIndicativeImperfectVosotros = pstrIndicativeImperfectVosotros;
-        this.strIndicativeImperfectEllos = pstrIndicativeImperfectEllos;
-        this.strIndicativePreteriteYo = pstrIndicativePreteriteYo;
-        this.strIndicativePreteriteTu = pstrIndicativePreteriteTu;
-        this.strIndicativePreteriteUsted = pstrIndicativePreteriteUsted;
-        this.strIndicativePreteriteNosotros = pstrIndicativePreteriteNosotros;
-        this.strIndicativePreteriteVosotros = pstrIndicativePreteriteVosotros;
-        this.strIndicativePreteriteEllos = pstrIndicativePreteriteEllos;
-        this.strIndicativeFutureYo = pstrIndicativeFutureYo;
-        this.strIndicativeFutureTu = pstrIndicativeFutureTu;
-        this.strIndicativeFutureUsted = pstrIndicativeFutureUsted;
-        this.strIndicativeFutureNosotros = pstrIndicativeFutureNosotros;
-        this.fstrIndicativeFutureVosotros = pfstrIndicativeFutureVosotros;
-        this.strIndicativeFutureEllos = pstrIndicativeFutureEllos;
-        this.strIndicativeConditionalYo = pstrIndicativeConditionalYo;
-        this.strIndicativeConditionalTu = pstrIndicativeConditionalTu;
-        this.strIndicativeConditionalUsted = pstrIndicativeConditionalUsted;
-        this.strIndicativeConditionalNosotros = pstrIndicativeConditionalNosotros;
-        this.strIndicativeConditionalVosotros = pstrIndicativeConditionalVosotros;
-        this.strIndicativeConditionalEllos = pstrIndicativeConditionalEllos;
-        this.strSubjunctivePresentYo = pstrSubjunctivePresentYo;
-        this.strSubjunctivePresentTu = pstrSubjunctivePresentTu;
-        this.strSubjunctivePresentUsted = pstrSubjunctivePresentUsted;
-        this.strSubjunctivePresentNosotros = pstrSubjunctivePresentNosotros;
-        this.strSubjunctivePresentVosotros = pstrSubjunctivePresentVosotros;
-        this.strSubjunctivePresentEllos = pstrSubjunctivePresentEllos;
-        this.strSubjunctiveImperfectRaYo = pstrSubjunctiveImperfectRaYo;
-        this.strSubjunctiveImperfectRaTu = pstrSubjunctiveImperfectRaTu;
-        this.strSubjunctiveImperfectRaUsted = pstrSubjunctiveImperfectRaUsted;
-        this.strSubjunctiveImperfectRaNosotros = pstrSubjunctiveImperfectRaNosotros;
-        this.strSubjunctiveImperfectRaVosotros = pstrSubjunctiveImperfectRaVosotros;
-        this.strSubjunctiveImperfectRaEllos = pstrSubjunctiveImperfectRaEllos;
-        this.strSubjunctiveImperfectSeYo = pstrSubjunctiveImperfectSeYo;
-        this.strSubjunctiveImperfectSeTu = pstrSubjunctiveImperfectSeTu;
-        this.strSubjunctiveImperfectSeUsted = pstrSubjunctiveImperfectSeUsted;
-        this.strSubjunctiveImperfectSeNosotros = pstrSubjunctiveImperfectSeNosotros;
-        this.strSubjunctiveImperfectSeVosotros = pstrSubjunctiveImperfectSeVosotros;
-        this.strSubjunctiveImperfectSeEllos = pstrSubjunctiveImperfectSeEllos;
-        this.strSubjunctiveFutureYo = pstrSubjunctiveFutureYo;
-        this.strSubjunctiveFutureTu = pstrSubjunctiveFutureTu;
-        this.strSubjunctiveFutureUsted = pstrSubjunctiveFutureUsted;
-        this.strSubjunctiveFutureNosotros = pstrSubjunctiveFutureNosotros;
-        this.strSubjunctiveFutureVosotros = pstrSubjunctiveFutureVosotros;
-        this.strSubjunctiveFutureEllos = pstrSubjunctiveFutureEllos;
-        this.strImperativeAffirmativeTu = pstrImperativeAffirmativeTu;
-        this.strImperativeAffirmativeUsted = pstrImperativeAffirmativeUsted;
-        this.strImperativeAffirmativeNosotros = pstrImperativeAffirmativeNosotros;
-        this.strImperativeAffirmativeVosotros = pstrImperativeAffirmativeVosotros;
-        this.strImperativeAffirmativeEllos = pstrImperativeAffirmativeEllos;
-        this.strImperativeNegativeTu = pstrImperativeNegativeTu;
-        this.strImperativeNegativeUsted = pstrImperativeNegativeUsted;
-        this.strImperativeNegativeNosotros = pstrImperativeNegativeNosotros;
-        this.strImperativeNegativeVosotros = pstrImperativeNegativeVosotros;
-        this.strImperativeNegativeEllos = pstrImperativeNegativeEllos;
-    }
+@Data
+@Entity @Table(name = "tblSpanishVerbConjugation")
+@XmlRootElement
+public class SpanishVerbConjugation implements Serializable, HibernateObject {
+
+    @Id @Column(name = "fstrInfinitive") private String strInfinitive = "";
+    @Column(name = "fstrGerund") private String strGerund = "";
+    @Column(name = "fstrPastParticipleMasculineSingular") private String strPastParticipleMasculineSingular = "";
+    @Column(name = "fstrPastParticipleFeminineSingular") private String strPastParticipleFeminineSingular = "";
+    @Column(name = "fstrPastParticipleMasculinePlural") private String strPastParticipleMasculinePlural = "";
+    @Column(name = "fstrPastParticipleFemininePlural") private String strPastParticipleFemininePlural = "";
+    @Column(name = "fstrIndicativePresentYo") private String strIndicativePresentYo = "";
+    @Column(name = "fstrIndicativePresentTu") private String strIndicativePresentTu = "";
+    @Column(name = "fstrIndicativePresentUsted") private String strIndicativePresentUsted = "";
+    @Column(name = "fstrIndicativePresentNosotros") private String strIndicativePresentNosotros = "";
+    @Column(name = "fstrIndicativePresentVosotros") private String strIndicativePresentVosotros = "";
+    @Column(name = "fstrIndicativePresentEllos") private String strIndicativePresentEllos = "";
+    @Column(name = "fstrIndicativeImperfectYo") private String strIndicativeImperfectYo = "";
+    @Column(name = "fstrIndicativeImperfectTu") private String strIndicativeImperfectTu = "";
+    @Column(name = "fstrIndicativeImperfectUsted") private String strIndicativeImperfectUsted = "";
+    @Column(name = "fstrIndicativeImperfectNosotros") private String strIndicativeImperfectNosotros = "";
+    @Column(name = "fstrIndicativeImperfectVosotros") private String strIndicativeImperfectVosotros = "";
+    @Column(name = "fstrIndicativeImperfectEllos") private String strIndicativeImperfectEllos = "";
+    @Column(name = "fstrIndicativePreteriteYo") private String strIndicativePreteriteYo = "";
+    @Column(name = "fstrIndicativePreteriteTu") private String strIndicativePreteriteTu = "";
+    @Column(name = "fstrIndicativePreteriteUsted") private String strIndicativePreteriteUsted = "";
+    @Column(name = "fstrIndicativePreteriteNosotros") private String strIndicativePreteriteNosotros = "";
+    @Column(name = "fstrIndicativePreteriteVosotros") private String strIndicativePreteriteVosotros = "";
+    @Column(name = "fstrIndicativePreteriteEllos") private String strIndicativePreteriteEllos = "";
+    @Column(name = "fstrIndicativeFutureYo") private String strIndicativeFutureYo = "";
+    @Column(name = "fstrIndicativeFutureTu") private String strIndicativeFutureTu = "";
+    @Column(name = "fstrIndicativeFutureUsted") private String strIndicativeFutureUsted = "";
+    @Column(name = "fstrIndicativeFutureNosotros") private String strIndicativeFutureNosotros = "";
+    @Column(name = "fstrIndicativeFutureVosotros") private String fstrIndicativeFutureVosotros = "";
+    @Column(name = "fstrIndicativeFutureEllos") private String strIndicativeFutureEllos = "";
+    @Column(name = "fstrIndicativeConditionalYo") private String strIndicativeConditionalYo = "";
+    @Column(name = "fstrIndicativeConditionalTu") private String strIndicativeConditionalTu = "";
+    @Column(name = "fstrIndicativeConditionalUsted") private String strIndicativeConditionalUsted = ""; 
+    @Column(name = "fstrIndicativeConditionalNosotros") private String strIndicativeConditionalNosotros = "";
+    @Column(name = "fstrIndicativeConditionalVosotros") private String strIndicativeConditionalVosotros = "";
+    @Column(name = "fstrIndicativeConditionalEllos") private String strIndicativeConditionalEllos = "";
+    @Column(name = "fstrSubjunctivePresentYo") private String strSubjunctivePresentYo = "";
+    @Column(name = "fstrSubjunctivePresentTu") private String strSubjunctivePresentTu = "";
+    @Column(name = "fstrSubjunctivePresentUsted") private String strSubjunctivePresentUsted = "";
+    @Column(name = "fstrSubjunctivePresentNosotros") private String strSubjunctivePresentNosotros = "";
+    @Column(name = "fstrSubjunctivePresentVosotros") private String strSubjunctivePresentVosotros = "";
+    @Column(name = "fstrSubjunctivePresentEllos") private String strSubjunctivePresentEllos = "";
+    @Column(name = "fstrSubjunctiveImperfectRaYo") private String strSubjunctiveImperfectRaYo = "";
+    @Column(name = "fstrSubjunctiveImperfectRaTu") private String strSubjunctiveImperfectRaTu = "";
+    @Column(name = "fstrSubjunctiveImperfectRaUsted") private String strSubjunctiveImperfectRaUsted = "";
+    @Column(name = "fstrSubjunctiveImperfectRaNosotros") private String strSubjunctiveImperfectRaNosotros = "";
+    @Column(name = "fstrSubjunctiveImperfectRaVosotros") private String strSubjunctiveImperfectRaVosotros = "";
+    @Column(name = "fstrSubjunctiveImperfectRaEllos") private String strSubjunctiveImperfectRaEllos = "";
+    @Column(name = "fstrSubjunctiveImperfectSeYo") private String strSubjunctiveImperfectSeYo = "";
+    @Column(name = "fstrSubjunctiveImperfectSeTu") private String strSubjunctiveImperfectSeTu = "";
+    @Column(name = "fstrSubjunctiveImperfectSeUsted") private String strSubjunctiveImperfectSeUsted = "";
+    @Column(name = "fstrSubjunctiveImperfectSeNosotros") private String strSubjunctiveImperfectSeNosotros = "";
+    @Column(name = "fstrSubjunctiveImperfectSeVosotros") private String strSubjunctiveImperfectSeVosotros = "";
+    @Column(name = "fstrSubjunctiveImperfectSeEllos") private String strSubjunctiveImperfectSeEllos = "";
+    @Column(name = "fstrSubjunctiveFutureYo") private String strSubjunctiveFutureYo = "";
+    @Column(name = "fstrSubjunctiveFutureTu") private String strSubjunctiveFutureTu = "";
+    @Column(name = "fstrSubjunctiveFutureUsted") private String strSubjunctiveFutureUsted = "";
+    @Column(name = "fstrSubjunctiveFutureNosotros") private String strSubjunctiveFutureNosotros = "";
+    @Column(name = "fstrSubjunctiveFutureVosotros") private String strSubjunctiveFutureVosotros = "";
+    @Column(name = "fstrSubjunctiveFutureEllos") private String strSubjunctiveFutureEllos = "";
+    @Column(name = "fstrImperativeAffirmativeTu") private String strImperativeAffirmativeTu = "";
+    @Column(name = "fstrImperativeAffirmativeUsted") private String strImperativeAffirmativeUsted = "";
+    @Column(name = "fstrImperativeAffirmativeNosotros") private String strImperativeAffirmativeNosotros = "";
+    @Column(name = "fstrImperativeAffirmativeVosotros") private String strImperativeAffirmativeVosotros = "";
+    @Column(name = "fstrImperativeAffirmativeEllos") private String strImperativeAffirmativeEllos = "";
+    @Column(name = "fstrImperativeNegativeTu") private String strImperativeNegativeTu = "";
+    @Column(name = "fstrImperativeNegativeUsted") private String strImperativeNegativeUsted = "";
+    @Column(name = "fstrImperativeNegativeNosotros") private String strImperativeNegativeNosotros = "";
+    @Column(name = "fstrImperativeNegativeVosotros") private String strImperativeNegativeVosotros = "";
+    @Column(name = "fstrImperativeNegativeEllos") private String strImperativeNegativeEllos = "";
 
      public SpanishVerbConjugation(List<String> pstrConjugationList) {
         if (pstrConjugationList.size() > 0) {

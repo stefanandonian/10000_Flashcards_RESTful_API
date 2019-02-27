@@ -1,6 +1,6 @@
 package parsers.wikipedia.control;
 
-import main.java.control.Global;
+import control.Global;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

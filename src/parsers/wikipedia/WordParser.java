@@ -1,8 +1,10 @@
-package main.java.scraping.wikipedia.Parsers;
+package parsers.wikipedia;
 
-import main.java.control.Global;
-import main.java.hibernate.objects.HibernateObject;
-import main.java.hibernate.objects.Word;
+import control.Global;
+import hibernate.pojo.HibernateObject;
+import hibernate.pojo.Word;
+import parsers.wikipedia.control.ParserFactory;
+
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
@@ -53,16 +55,16 @@ public class WordParser extends Parser {
                                   mintRank);
         for (String strId : pstrIds) {
             switch (strId) {
-                case "Noun": wrdParsed.setBlnNoun(1); break;
-                case "Verb": wrdParsed.setBlnVerb(1); break;
-                case "Interjection": wrdParsed.setBlnInterjection(1); break;
-                case "Conjunction": wrdParsed.setBlnConjuction(1); break;
-                case "Preposition": wrdParsed.setBlnPreposition(1); break;
-                case "Pronoun": wrdParsed.setBlnPronoun(1); break;
-                case "Adverb": wrdParsed.setBlnAdverb(1); break;
-                case "Adjective": wrdParsed.setBlnAdjective(1); break;
-                case "Article": wrdParsed.setBlnArticle(1); break;
-                case "Particle": wrdParsed.setBlnParticle(1); break;
+                case "Noun": wrdParsed.setMblnNoun(true); break;
+                case "Verb": wrdParsed.setMblnVerb(true); break;
+                case "Interjection": wrdParsed.setMblnInterjection(true); break;
+                case "Conjunction": wrdParsed.setMblnConjuction(true); break;
+                case "Preposition": wrdParsed.setMblnPreposition(true); break;
+                case "Pronoun": wrdParsed.setMblnPronoun(true); break;
+                case "Adverb": wrdParsed.setMblnAdverb(true); break;
+                case "Adjective": wrdParsed.setMblnAdjective(true); break;
+                case "Article": wrdParsed.setMblnArticle(true); break;
+                case "Particle": wrdParsed.setMblnParticle(true); break;
                 default: break;
             }
         }

@@ -1,9 +1,10 @@
-package main.java.test.scraping.parsers;
+package parsers.wikipedia.test;
 
-import main.java.hibernate.objects.HibernateObject;
-import main.java.scraping.wikipedia.Parsers.Parser;
-import main.java.scraping.wikipedia.Parsers.ParserFactory;
-import main.java.scraping.wikipedia.Parsers.WikiLanguageElementsBuilder;
+import hibernate.pojo.HibernateObject;
+import parsers.wikipedia.Parser;
+import parsers.wikipedia.control.ParserFactory;
+import parsers.wikipedia.control.WikiLanguageElementsBuilder;
+
 import org.jsoup.select.Elements;
 
 import java.util.List;

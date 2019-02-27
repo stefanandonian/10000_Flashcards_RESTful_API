@@ -1,7 +1,7 @@
-package main.java.scraping.wikipedia.Parsers;
+package parsers.wikipedia;
 
-import main.java.hibernate.objects.Connection;
-import main.java.hibernate.objects.HibernateObject;
+import hibernate.pojo.Connection;
+import hibernate.pojo.HibernateObject;
 
 import org.jsoup.select.Elements;
 
@@ -41,7 +41,7 @@ public class ConnectionParser extends Parser {
         alstrWords.forEach(
                 strTo -> {
                     if (!strTo.contains(" ")) {
-                        alTRet.add(new Connection(pstrId, pstrWord, strTo));
+                        alTRet.add(new Connection(pstrWord, strTo, pstrId));
                     }
         });
 

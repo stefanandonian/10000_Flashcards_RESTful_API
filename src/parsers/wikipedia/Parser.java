@@ -1,6 +1,6 @@
-package main.java.scraping.wikipedia.Parsers;
+package parsers.wikipedia;
 
-import main.java.hibernate.objects.HibernateObject;
+import hibernate.pojo.HibernateObject;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;

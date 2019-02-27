@@ -1,7 +1,7 @@
-package main.java.scraping.wikipedia.Parsers;
+package parsers.wikipedia;
 
-import main.java.hibernate.objects.SpanishVerbConjugation;
-import main.java.hibernate.objects.HibernateObject;
+import hibernate.pojo.SpanishVerbConjugation;
+import hibernate.pojo.HibernateObject;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;

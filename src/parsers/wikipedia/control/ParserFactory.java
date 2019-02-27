@@ -1,4 +1,10 @@
-package main.java.scraping.wikipedia.Parsers;
+package parsers.wikipedia.control;
+
+import parsers.wikipedia.ConnectionParser;
+import parsers.wikipedia.DefinitionParser;
+import parsers.wikipedia.NounParser;
+import parsers.wikipedia.Parser;
+import parsers.wikipedia.SpanishVerbParser;
 
 public class ParserFactory {
 

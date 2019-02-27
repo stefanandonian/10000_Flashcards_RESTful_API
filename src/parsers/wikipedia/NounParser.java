@@ -1,8 +1,8 @@
-package main.java.scraping.wikipedia.Parsers;
+package parsers.wikipedia;
 
-import main.java.control.Global;
-import main.java.hibernate.objects.HibernateObject;
-import main.java.hibernate.objects.Noun;
+import control.Global;
+import hibernate.pojo.HibernateObject;
+import hibernate.pojo.Noun;
 import parsers.wikipedia.control.WikiLanguageElementsBuilder;
 
 import org.jsoup.select.Elements;

@@ -1,8 +1,8 @@
-package main.java.test.scraping.parsers;
+package parsers.wikipedia.test;
 
-import main.java.control.Global;
-import main.java.scraping.wikipedia.Parsers.SpanishVerbParser;
-import main.java.scraping.wikipedia.Parsers.WikiLanguageElementsBuilder;
+import control.Global;
+import parsers.wikipedia.SpanishVerbParser;
+import parsers.wikipedia.control.WikiLanguageElementsBuilder;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;

@@ -1,7 +1,9 @@
 package parsers.wikipedia.control;
 
-import main.java.control.Global;
-import main.java.hibernate.HibernateConnection;
+import control.Global;
+import hibernate.HibernateConnection;
+import parsers.wikipedia.WordParser;
+
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 

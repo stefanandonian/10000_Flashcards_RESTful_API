@@ -1,38 +1,24 @@
 package hibernate.pojo;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@Entity
-@Table(name = "tblNoun")
-public class Noun implements HibernateObject {
+@Data @AllArgsConstructor
+@Entity @Table(name = "tblNoun")
+@XmlRootElement
+public class Noun implements Serializable, HibernateObject {
 
-    @Id
-    @Column(name = "fstrSingular")
-    private String strSingular;
-
-    @Column(name = "fstrPlural")
-    private String strPlural;
-
-    @Column(name = "fblnGender")
-    private int blnGender;
-
-    public Noun(String pstrSingular,
-                String pstrPlural,
-                int pblnGender) {
-        this.strSingular = pstrSingular;
-        this.strPlural = pstrPlural;
-        this.blnGender = pblnGender;
-    }
+    @Id @Column(name = "fstrSingular") private String strSingular;
+    @Column(name = "fstrPlural") private String strPlural;
+    @Column(name = "fblnGender") private int blnGender;
 
     public void print() {
         System.out.println("Noun Singular Form: " + strSingular + ", Noun Plural Form: " + strPlural + ", Gender: " + ((blnGender == 0) ? "Male" : "Female"));

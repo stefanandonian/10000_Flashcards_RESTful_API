@@ -1,45 +1,29 @@
 package hibernate.pojo;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@Entity
-@Table(name = "tblDefinition")
-public class Definition implements HibernateObject {
+@Data @AllArgsConstructor
+@Entity @Table(name = "tblDefinition")
+@XmlRootElement
+public class Definition implements Serializable, HibernateObject {
 
-    @Id
-    @Column(name = "fstrWord")
-    private String strWord;
+    @Id @Column(name = "fstrWord") private String strWord;
+    @Column(name = "fstrPartOfSpeech") private String strPartOfSpeech;
+    @Column(name = "fstrDefinition") private String strDefinition;
 
-    @Column(name = "fstrPartOfSpeech")
-    private String strPartOfSpeech;
-
-    @Column(name = "fstrDefinition")
-    private String strDefinition;
-
-    public Definition(String pstrWord,
-                      String pstrPartOfSpeech,
-                      String pstrDefinition) {
-        this.strWord = pstrWord;
-        this.strPartOfSpeech = pstrPartOfSpeech;
-        this.strDefinition = pstrDefinition;
-    }
-
-    @Override
     public void print() {
         System.out.println("Part of Speech: " + strPartOfSpeech + ", Definition: " + strDefinition);
     }
 
-    @Override
     public String parsedData() {
         return strDefinition;
     }

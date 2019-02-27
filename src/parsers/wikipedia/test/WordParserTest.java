@@ -1,8 +1,8 @@
-package main.java.test.scraping.parsers;
+package parsers.wikipedia.test;
 
-import main.java.control.Global;
-import main.java.scraping.wikipedia.Parsers.WikiLanguageElementsBuilder;
-import main.java.scraping.wikipedia.Parsers.WordParser;
+import control.Global;
+import parsers.wikipedia.control.WikiLanguageElementsBuilder;
+import parsers.wikipedia.WordParser;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -16,8 +16,20 @@ public class WordParserTest extends ParserTest {
         wp.setMeleSpanish(WikiLanguageElementsBuilder.build("no"));
         wp.setRank(3);
 
-        String strExpected = "no,"+ Global.SPANISH+",3,1,0,0,0,1,0,0,1,0,0";
-        String strActual = wp.parse().get(0).parsedData();
+        String strExpected = "Word(mstrWord=no, "
+        		+ "mintLanguage=0, "
+        		+ "mintRank=3, "
+        		+ "mblnNoun=true, "
+        		+ "mblnPronoun=false, "
+        		+ "mblnAdjective=false, "
+        		+ "mblnVerb=false, "
+        		+ "mblnAdverb=true, "
+        		+ "mblnPreposition=false, "
+        		+ "mblnConjuction=false, "
+        		+ "mblnInterjection=true, "
+        		+ "mblnArticle=false, "
+        		+ "mblnParticle=false)";
+        String strActual = wp.parse().get(0).toString();
 
         assertEquals(strExpected, strActual);
     }

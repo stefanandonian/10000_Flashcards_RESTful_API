@@ -6,16 +6,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
 
-@Data
+@Data @AllArgsConstructor
 @Entity @Table(name = "tblWord")
 @XmlRootElement
-public class Word implements Serializable {
+public class Word implements Serializable, HibernateObject {
 
-	private static final long serialVersionUID = 1L;
 	@Id @Column(name = "fstrWord") private String mstrWord;
 	@Column(name = "fintLanguage") private int mintLanguage;
 	@Column(name = "fintRank") private int mintRank;
@@ -29,34 +29,6 @@ public class Word implements Serializable {
 	@Column(name = "fblnInterjection") private boolean mblnInterjection = false;
 	@Column(name = "fblnArticle") private boolean mblnArticle = false;
 	@Column(name = "fblnParticle") private boolean mblnParticle = false;
-
-    public Word(String pstrWord,
-                int pintLanguage,
-                int pintRank,
-                boolean pblnNoun,
-                boolean pblnPronoun ,
-                boolean pblnAdjective,
-                boolean pblnVerb,
-                boolean pblnAdverb,
-                boolean pblnPreposition,
-                boolean pblnConjuction,
-                boolean pblnInterjection,
-                boolean pblnArticle,
-                boolean pblnParticle) {
-        this.mstrWord = pstrWord;
-        this.mintLanguage = pintLanguage;
-        this.mintRank = pintRank;
-        this.mblnNoun = pblnNoun;
-        this.mblnPronoun = pblnPronoun;
-        this.mblnAdjective = pblnAdjective;
-        this.mblnVerb = pblnVerb;
-        this.mblnAdverb = pblnAdverb;
-        this.mblnPreposition = pblnPreposition;
-        this.mblnConjuction = pblnConjuction;
-        this.mblnInterjection = pblnInterjection;
-        this.mblnArticle = pblnArticle;
-        this.mblnParticle = pblnParticle;
-    }
 
     public Word(String pstrWord,
     		    int pintLanguage,

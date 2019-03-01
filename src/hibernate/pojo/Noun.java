@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Noun implements Serializable, HibernateObject {
 
-    @Id @Column(name = "fstrSingular") private String strSingular;
+    @Id @Column(name = "fstrWord") private String strSingular;
     @Column(name = "fstrPlural") private String strPlural;
     @Column(name = "fblnGender") private int blnGender;
 

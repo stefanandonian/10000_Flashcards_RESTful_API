@@ -15,7 +15,7 @@ import java.util.List;
 @XmlRootElement
 public class SpanishVerbConjugation implements Serializable, HibernateObject {
 
-    @Id @Column(name = "fstrInfinitive") private String strInfinitive = "";
+    @Id @Column(name = "fstrWord") private String strInfinitive = "";
     @Column(name = "fstrGerund") private String strGerund = "";
     @Column(name = "fstrPastParticipleMasculineSingular") private String strPastParticipleMasculineSingular = "";
     @Column(name = "fstrPastParticipleFeminineSingular") private String strPastParticipleFeminineSingular = "";

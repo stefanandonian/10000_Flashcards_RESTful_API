@@ -9,20 +9,24 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Data @AllArgsConstructor @NoArgsConstructor
-@Entity @Table(name = "tblConnection")
-@XmlRootElement
-public class Connection implements Serializable, HibernateObject {
+import hibernate.pojo.keys.ConnectionCompositeKey;
+import hibernate.pojo.keys.DefinitionCompositeKey;
 
-    @Id @Column(name = "fstrFrom") private String strFrom;
-    @Column(name = "fstrTo") private String strTo;
-    @Column(name = "fstrType") private String strType;
+@XmlRootElement
+@Data @AllArgsConstructor @NoArgsConstructor
+@Entity @IdClass(ConnectionCompositeKey.class) @Table(name = "tblConnection")
+public class Connection implements Serializable, HibernateObject {
+	
+	@Id @Column(name = "fstrWord") private String strWord;
+	@Id @Column(name = "fstrTo") private String strTo;
+    @Id @Column(name = "fstrType") private String strType;
 
     public void print() {
-        System.out.println("Connection Type: " + strType + ", From: " + strFrom + ", To: " + strTo);
+        System.out.println("Connection Type: " + strType + ", From: " + strWord + ", To: " + strTo);
     }
 
     public String parsedData() {

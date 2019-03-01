@@ -56,7 +56,7 @@ public class WikiParseEngine {
         }
     }
 
-    private void runOneWord(String pstrWord,
+    public void runOneWord(String pstrWord,
                             int pintRank) {
         if (!alreadyParsed(pstrWord)) {
             Elements eleWikiPage = WikiLanguageElementsBuilder.build(pstrWord);

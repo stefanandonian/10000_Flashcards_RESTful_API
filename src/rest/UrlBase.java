@@ -10,7 +10,11 @@ import java.util.Set;
 public class UrlBase extends Application {
 	
     public Set<Class<?>> getClasses() {
-        return new HashSet<Class<?>>(Arrays.asList(WordResource.class));
+        return new HashSet<Class<?>>(Arrays.asList(WordResource.class, 
+        		ConnectionResource.class,
+        		DefinitionResource.class, 
+        		SpanishVerbResource.class,
+        		NounResource.class));
     }
 	
 }

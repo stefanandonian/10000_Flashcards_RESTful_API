@@ -2,6 +2,7 @@ package parsers.wikipedia.control;
 
 import control.Global;
 import hibernate.queries.InsertManager;
+import hibernate.queries.Select;
 import parsers.wikipedia.WordParser;
 
 import org.jsoup.Jsoup;
@@ -11,12 +12,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class WikiParseEngine {
-
-    HashSet<String> strAlreadySet = new HashSet<>();
 
     public static void main(String[] args) {
         WikiParseEngine goGoGadget = new WikiParseEngine();
@@ -32,7 +30,6 @@ public class WikiParseEngine {
                 "9001-10000" }) {
             goGoGadget.run(strId, 10000);
         }
-        //goGoGadget.runOneWord("teresa", 5029);
     }
 
     public void run(String pstrId,
@@ -41,39 +38,35 @@ public class WikiParseEngine {
 
         int i = 0;
         while (i < strFrequencyList.size() && i < (pintLimit*2)) {
-            System.out.println("------------------------  " + i + "  ------------------------");
-            String strWord = strFrequencyList.get(i+1);
-            int intRank = Integer.parseInt(strFrequencyList.get(i));
-            System.out.println("Rank: "+intRank);
+        	System.out.println("------------------------  " + i + "  ------------------------");
+        	String strWord = strFrequencyList.get(i+1);
 
-            int _index = strWord.indexOf(" ");
-            if (_index > 0) {
-                strWord = strWord.substring(0, _index);
-                runOneWord(strWord.substring(_index), intRank);
-            }
-            runOneWord(strWord, intRank);
-            i += 2;
+        	if (!Select.isInDB(strWord)) {
+        		int intRank = Integer.parseInt(strFrequencyList.get(i));
+        		System.out.println("Rank: "+intRank);
+
+        		int _index = strWord.indexOf(" ");
+        		if (_index > 0) {
+        			strWord = strWord.substring(0, _index);
+        			runOneWord(strWord.substring(_index), intRank);
+        		}
+        		runOneWord(strWord, intRank);
+        	}
+        	i += 2;
         }
     }
 
     public void runOneWord(String pstrWord,
                             int pintRank) {
-        if (!alreadyParsed(pstrWord)) {
-            Elements eleWikiPage = WikiLanguageElementsBuilder.build(pstrWord);
-            if (!eleWikiPage.isEmpty()) {
-                WordParser wg = new WordParser();
-                wg.setMstrWord(pstrWord);
-                wg.setMeleSpanish(eleWikiPage);
-                wg.setRank(pintRank);
-                InsertManager.insert(wg.parse());
-                //strAlreadySet.add(pstrWord);
-                wg.parse().forEach(n -> n.print());
-            }
-        }
-    }
-
-    private boolean alreadyParsed(String pstrWord) {
-        return strAlreadySet.contains(pstrWord);
+    	Elements eleWikiPage = WikiLanguageElementsBuilder.build(pstrWord);
+    	if (!eleWikiPage.isEmpty()) {
+    		WordParser wg = new WordParser();
+    		wg.setMstrWord(pstrWord);
+    		wg.setMeleSpanish(eleWikiPage);
+    		wg.setRank(pintRank);
+    		InsertManager.insert(wg.parse());
+    		wg.parse().forEach(n -> n.print());
+    	}
     }
 
     public List<String> getFrequencyList(String pstrId) {

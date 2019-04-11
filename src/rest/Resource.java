@@ -13,7 +13,11 @@ public class Resource<T> {
     public Response getAll(String pstrClass) {
     	List<T> results = Select.<T>selectAll(pstrClass);
         GenericEntity<List<T>> responseWrapper = new GenericEntity<>(results) {};
-        return Response.ok(responseWrapper).build();
+        return Response.ok(responseWrapper)
+        		//.header("Access-Control-Allow-Origin", "*")
+        		//.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+        		//.allow("OPTIONS")
+        		.build();
     }
 
     public Response get(String pstrClass, String pstrWord) { 
@@ -23,7 +27,11 @@ public class Resource<T> {
 		} 
         List<T> results = Select.<T>select(pstrClass, pstrWord);
         GenericEntity<List<T>> responseWrapper = new GenericEntity<>(results) {};
-        return Response.ok(responseWrapper).build();
+        return Response.ok(responseWrapper)
+        		//.header("Access-Control-Allow-Origin", "*")
+        		//.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+        		//.allow("OPTIONS")
+        		.build();
     }
 
 }

@@ -1,20 +1,19 @@
 package rest;
 
 import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+
+import org.glassfish.jersey.server.ResourceConfig;
 
 @ApplicationPath("spanish")
-public class UrlBase extends Application {
+public class UrlBase extends ResourceConfig {
 	
-    public Set<Class<?>> getClasses() {
-        return new HashSet<Class<?>>(Arrays.asList(WordResource.class, 
-        		ConnectionResource.class,
-        		DefinitionResource.class, 
-        		SpanishVerbResource.class,
-        		NounResource.class));
-    }
+	public UrlBase() {
+		register(WordResource.class);
+		register(ConnectionResource.class);
+		register(DefinitionResource.class);
+		register(SpanishVerbResource.class);
+		register(NounResource.class);
+		register(CORSResponseFilter.class);
+	}
 	
 }

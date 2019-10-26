@@ -1,6 +1,7 @@
 package hibernate.pojo;
 
 public interface HibernateObject {
-    void print();
-    String parsedData();
+    public void print();
+    //public boolean validate();
+    public String parsedData();
 }

@@ -21,8 +21,8 @@ public class NounResource extends Resource<Noun> {
     @GET
     @Path("/{noun}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getNoun(final @PathParam("noun") String pstrWord) { 
-        return get("Noun", pstrWord);
+    public Response getNoun(final @PathParam("noun") String pstrWord){ 
+        	return get("Noun", pstrWord);
     }
 
 }
